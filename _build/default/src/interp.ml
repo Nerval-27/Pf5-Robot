@@ -24,7 +24,7 @@ let run_det (prog : program) (p : point) : point list =
 
 let target_reached_det (prog : program) (p : point) (target : rectangle) : bool =
   assert (is_deterministic prog);
-  in_rectangle target (List.nth (run_det prog p) ((List.length prog) - 1))
+  in_rectangle target (List.hd (List.rev (run_det prog p)))
   
 let run (prog : program) (p : point) : point list =
   failwith "À compléter"
@@ -35,4 +35,4 @@ let all_choices (prog : program) : program list =
 let target_reached (prog : program) (p : point) (r : rectangle) : bool =
   assert (not (is_deterministic prog));
   let possible_execution_list = all_choices prog in
-  List.for_all (fun sub_prog -> in_rectangle r (List.nth (run sub_prog p) ((List.length sub_prog) - 1))) possible_execution_list
+  List.for_all (fun sub_prog -> in_rectangle r (List.hd (List.rev (run sub_prog p)))) possible_execution_list

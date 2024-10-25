@@ -20,7 +20,7 @@ let inclusion (r : rectangle) (t : rectangle) : bool =
 let target_reached_rect (prog : program) (r : rectangle) (target : rectangle) : bool =
   assert (not (is_deterministic prog));
   let possible_execution_list = all_choices prog in
-  List.for_all (fun sub_prog -> inclusion target (List.nth (run_rect sub_prog r) ((List.length sub_prog) - 1))) possible_execution_list
+  List.for_all (fun sub_prog -> inclusion target (List.hd (List.rev (run_rect sub_prog r)))) possible_execution_list
 
 let run_polymorphe (transform : transformation -> 'a -> 'a) (prog : program) (i : 'a) : 'a list =
   failwith "À compléter"

@@ -1,4 +1,4 @@
-# dune exec test/test.exe -- test
+# dune build
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /home/adagrane/.cache/dune/db
@@ -13,4 +13,4 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/bin/ocamlc.opt -config > /tmp/dune_32d6f6_output
+$ /home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/bin/ocamlc.opt -config > /tmp/dune_6fd5fd_output
