@@ -1,0 +1,16 @@
+# dune exec test/test.exe -- test
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/adagrane/.cache/dune/db
+# Workspace root: /home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/bin/ocamlc.opt -config > /tmp/dune_8cb1a4_output
