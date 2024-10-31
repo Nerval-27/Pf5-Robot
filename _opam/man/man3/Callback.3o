@@ -1,4 +1,4 @@
-.TH "Callback" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Callback" 3 2024-10-28 OCamldoc "OCaml library"
 .SH NAME
 Callback \- Registering OCaml values with the C runtime.
 .SH Module

@@ -1,0 +1,2 @@
+[33mASSERT[0m target_reached [Repeat (5, [Either ([Move TRANS({0,1})], [Move TRANS({0,-1})]); Either (
+                            [Move TRANS({1,0})], [Move TRANS({-1,0})])])] {0,0} {-4.9,4.9,-4.9,4.9}

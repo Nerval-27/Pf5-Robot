@@ -1,4 +1,4 @@
-.TH "Pparse" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Pparse" 3 2024-10-28 OCamldoc "OCaml library"
 .SH NAME
 Pparse \- Driver for the parser and external preprocessors.
 .SH Module

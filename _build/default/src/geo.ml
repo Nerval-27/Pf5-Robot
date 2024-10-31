@@ -18,7 +18,7 @@ let deg_of_rad (a : angle) : angle =
   a *. (180.0 /. Float.pi)
 
 let rotate (c : point) (alpha : angle) (p : point) : point =
-  let theta = rad_of_deg alpha in 
+  let theta = rad_of_deg alpha in
   {x = c.x +. (p.x -. c.x) *. (Float.cos theta) -. (p.y -. c.y) *. (Float.sin theta) ;
    y = c.y +. (p.x -. c.x) *. (Float.sin theta) +. (p.y -. c.y) *. (Float.cos theta)}
   
@@ -43,6 +43,15 @@ let in_rectangle (r : rectangle) (p : point) : bool =
 
 let corners (r :rectangle) : point list =
   [{x = r.x_min ; y = r.y_min} ; {x = r.x_min ; y = r.y_max} ; {x = r.x_max ; y = r.y_min} ; {x = r.x_max ; y = r.y_max}]
-  
-let rectangle_of_list (pl : point list) : rectangle = 
-  failwith "À compléter"
+
+
+let rectangle_of_list (pl : point list) : rectangle =
+  match pl with
+  | [] -> failwith "La liste de points ne peut pas être vide"
+  | p0 :: reste ->
+      let x_min, x_max, y_min, y_max =
+        List.fold_left (fun (x_min, x_max, y_min, y_max) p ->
+          (Float.min x_min p.x, Float.max x_max p.x, Float.min y_min p.y, Float.max y_max p.y)
+        ) (p0.x, p0.x, p0.y, p0.y) reste
+      in
+      { x_min; x_max; y_min; y_max }
