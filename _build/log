@@ -14,4 +14,41 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/bin/ocamlc.opt -config > /var/folders/zm/kw6dt0ss28n1g4sjwxyg9r7c0000gn/T/dune_b6e85c_output
+$ /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/bin/ocamlc.opt -config > /var/folders/zm/kw6dt0ss28n1g4sjwxyg9r7c0000gn/T/dune_3ccee6_output
+$ (cd _build/default && /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/bin/ocamldep.opt -modules -impl src/approx.ml) > _build/default/src/.pf5.objs/pf5__Approx.impl.d
+$ (cd _build/default && /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w A-27-39-33-32 -g -I src/.pf5.objs/byte -I src/.pf5.objs/native -I /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/fmt -intf-suffix .ml -no-alias-deps -opaque -open Pf5 -o src/.pf5.objs/native/pf5__Approx.cmx -c -impl src/approx.ml)
+> File "src/approx.ml", lines 41-47, characters 18-33:
+> 41 | ..................match inst with
+> 42 |                   |Move t ->  let last_position = list_last_elem acc in
+> 43 |                         let new_position = transform_rect t last_position in
+> 44 |                         acc @ [new_position]
+> 45 |                   |Either (p',p'')  -> let last_position = list_last_elem acc in
+> 46 |                          if Random.bool () then run_rect p' last_position else run_rect p'' last_position
+> 47 |                   |_ ->  acc @ []
+> Warning 4 [fragile-match]: this pattern-matching is fragile.
+> It will remain exhaustive when constructors are added to type Pf5__Interp.instruction.
+> File "src/approx.ml", lines 69-75, characters 18-33:
+> 69 | ..................match inst with
+> 70 |                   |Move t ->  let last_position = list_last_elem acc in
+> 71 |                         let new_position = transform t last_position in
+> 72 |                         acc @ [new_position]
+> 73 |                   |Either (p',p'')  -> let last_position = list_last_elem acc in
+> 74 |                          if Random.bool () then run_polymorphe transform p' last_position else run_polymorphe transform p'' last_position
+> 75 |                   |_ ->  acc @ []
+> Warning 4 [fragile-match]: this pattern-matching is fragile.
+> It will remain exhaustive when constructors are added to type Pf5__Interp.instruction.
+> File "src/approx.ml", lines 83-95, characters 6-16:
+> 83 | ......match inst with
+> 84 |       | Move t ->
+> 85 |           let last_rectangle = list_last_elem acc in
+> 86 |           let new_rectangle = transform_rect t last_rectangle in
+> 87 |           acc @ [new_rectangle]
+> ...
+> 92 |         
+> 93 |           let either_rectangle = rectangle_of_list (corners rect1 @ corners rect2) in
+> 94 |           acc @ [either_rectangle]
+> 95 |       | _ -> acc
+> Warning 4 [fragile-match]: this pattern-matching is fragile.
+> It will remain exhaustive when constructors are added to type Pf5__Interp.instruction.
+$ (cd _build/default && /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w A-27-39-33-32 -g -a -o src/pf5.cmxa src/.pf5.objs/native/pf5.cmx src/.pf5.objs/native/pf5__Geo.cmx src/.pf5.objs/native/pf5__Interp.cmx src/.pf5.objs/native/pf5__Approx.cmx)
+$ (cd _build/default && /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -open Pf5 -g -o test/test.exe /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/fmt/fmt.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/astring/astring.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/cmdliner/cmdliner.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/uutf/uutf.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/alcotest/stdlib_ext/alcotest_stdlib_ext.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/fmt/fmt_cli.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/re/re.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/stdlib-shims/stdlib_shims.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/alcotest/engine/alcotest_engine.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/ocaml/unix.cmxa -I /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/ocaml /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/fmt/fmt_tty.cmxa /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/alcotest/alcotest.cmxa -I /Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/alcotest src/pf5.cmxa test/.test.eobjs/native/dune__exe.cmx test/.test.eobjs/native/dune__exe__Test_base.cmx test/.test.eobjs/native/dune__exe__Test_absint.cmx test/.test.eobjs/native/dune__exe__Test.cmx)

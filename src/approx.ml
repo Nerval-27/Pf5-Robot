@@ -97,6 +97,7 @@ let rec over_approximate (prog : program) (r : rectangle) : rectangle =
   rectangle_of_list (List.concat_map corners result_rectangles)
 
 
-let feasible_target_reached (prog : program) (r : rectangle) (target : rectangle) : bool = 
+
+let feasible_target_reached (prog : program) (r : rectangle) (target : rectangle) : bool =
     let approximated_rect = over_approximate prog r in
     inclusion approximated_rect target
