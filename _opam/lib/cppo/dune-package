@@ -1,5 +1,6 @@
-(lang dune 3.16)
+(lang dune 3.17)
 (name cppo)
+(version 1.8.0)
 (sections (lib .) (bin ../../bin) (doc ../../doc/cppo))
 (files
  (lib (META dune-package opam))

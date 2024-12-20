@@ -1,4 +1,4 @@
-(lang dune 3.16)
+(lang dune 3.17)
 (name mew_vi)
 (sections (lib .) (libexec .) (doc ../../doc/mew_vi))
 (files

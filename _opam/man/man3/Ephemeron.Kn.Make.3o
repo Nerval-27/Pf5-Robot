@@ -1,4 +1,4 @@
-.TH "Ephemeron.Kn.Make" 3 2024-10-28 OCamldoc "OCaml library"
+.TH "Ephemeron.Kn.Make" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Ephemeron.Kn.Make \- Functor building an implementation of a weak hash table
 .SH Module

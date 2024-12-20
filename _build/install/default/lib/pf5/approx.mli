@@ -1,1 +1,1 @@
-../../../../default/src/approx.mli
+../../../../default/lib/approx.mli

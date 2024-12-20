@@ -1,4 +1,4 @@
-.TH "Result" 3 2024-10-28 OCamldoc "OCaml library"
+.TH "Result" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Result \- Result values.
 .SH Module

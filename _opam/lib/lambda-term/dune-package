@@ -1,4 +1,4 @@
-(lang dune 3.16)
+(lang dune 3.17)
 (name lambda-term)
 (version 3.2.0)
 (sections

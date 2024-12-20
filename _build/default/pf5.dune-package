@@ -1,6 +1,6 @@
-(lang dune 3.16)
+(lang dune 3.17)
 (name pf5)
-(sections (lib .) (libexec .) (doc ../../doc/pf5))
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/pf5))
 (files
  (lib
   (META
@@ -32,6 +32,7 @@
    pf5__Interp.cmti
    pf5__Interp.cmx))
  (libexec (pf5.cmxs))
+ (bin (interp))
  (doc (README.md)))
 (library
  (name pf5)

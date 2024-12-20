@@ -1,6 +1,6 @@
-(lang dune 3.16)
+(lang dune 3.17)
 (name xdg)
-(version 3.16.0)
+(version 3.17.0)
 (sections (lib .) (libexec .) (doc ../../doc/xdg) (stublibs ../stublibs))
 (files
  (lib

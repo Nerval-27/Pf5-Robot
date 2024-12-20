@@ -31,6 +31,9 @@ lib: [
 libexec: [
   "_build/install/default/lib/pf5/pf5.cmxs"
 ]
+bin: [
+  "_build/install/default/bin/interp"
+]
 doc: [
   "_build/install/default/doc/pf5/README.md"
 ]

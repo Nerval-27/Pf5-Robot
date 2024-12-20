@@ -1,4 +1,4 @@
-.TH "Attr_helper" 3 2024-10-28 OCamldoc "OCaml library"
+.TH "Attr_helper" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Attr_helper \- Helpers for attributes
 .SH Module

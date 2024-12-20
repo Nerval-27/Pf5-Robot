@@ -1,6 +1,6 @@
-(lang dune 3.16)
+(lang dune 3.17)
 (name dune)
-(version 3.16.0)
+(version 3.17.0)
 (sections
  (lib .)
  (bin ../../bin)
@@ -34,6 +34,7 @@
    man1/dune-monitor.1
    man1/dune-ocaml-merlin.1
    man1/dune-ocaml.1
+   man1/dune-package.1
    man1/dune-pkg.1
    man1/dune-printenv.1
    man1/dune-promote.1
@@ -45,6 +46,7 @@
    man1/dune-shutdown.1
    man1/dune-subst.1
    man1/dune-test.1
+   man1/dune-tools.1
    man1/dune-top.1
    man1/dune-uninstall.1
    man1/dune-upgrade.1

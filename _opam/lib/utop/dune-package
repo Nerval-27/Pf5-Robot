@@ -1,6 +1,5 @@
-(lang dune 3.16)
+(lang dune 3.17)
 (name utop)
-(version 2.14.0)
 (sections
  (lib .)
  (bin ../../bin)

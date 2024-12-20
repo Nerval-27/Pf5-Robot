@@ -1,1 +1,1 @@
-../../../../default/src/interp.mli
+../../../../default/lib/interp.mli

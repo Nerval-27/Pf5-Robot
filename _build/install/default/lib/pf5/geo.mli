@@ -1,1 +1,1 @@
-../../../../default/src/geo.mli
+../../../../default/lib/geo.mli

@@ -14,7 +14,7 @@
 ac_cv_alignof_double=${ac_cv_alignof_double=8}
 ac_cv_alignof_long=${ac_cv_alignof_long=8}
 ac_cv_alignof_long_long=${ac_cv_alignof_long_long=8}
-ac_cv_build=${ac_cv_build=aarch64-apple-darwin24.0.0}
+ac_cv_build=${ac_cv_build=aarch64-apple-darwin24.1.0}
 ac_cv_c_bigendian=${ac_cv_c_bigendian=no}
 ac_cv_c_compiler_gnu=${ac_cv_c_compiler_gnu=yes}
 ac_cv_env_ASPP_set=set
@@ -165,7 +165,7 @@ ac_cv_header_termios_h=${ac_cv_header_termios_h=yes}
 ac_cv_header_unistd_h=${ac_cv_header_unistd_h=yes}
 ac_cv_header_utime_h=${ac_cv_header_utime_h=yes}
 ac_cv_header_xlocale_h=${ac_cv_header_xlocale_h=yes}
-ac_cv_host=${ac_cv_host=aarch64-apple-darwin24.0.0}
+ac_cv_host=${ac_cv_host=aarch64-apple-darwin24.1.0}
 ac_cv_lib_m_cos=${ac_cv_lib_m_cos=yes}
 ac_cv_member_struct_stat_st_atim_tv_nsec=${ac_cv_member_struct_stat_st_atim_tv_nsec=no}
 ac_cv_objext=${ac_cv_objext=o}
@@ -196,7 +196,7 @@ ac_cv_sizeof_long_long=${ac_cv_sizeof_long_long=8}
 ac_cv_sizeof_long_p=${ac_cv_sizeof_long_p=8}
 ac_cv_sizeof_short=${ac_cv_sizeof_short=2}
 ac_cv_sys_interpreter=${ac_cv_sys_interpreter=yes}
-ac_cv_target=${ac_cv_target=aarch64-apple-darwin24.0.0}
+ac_cv_target=${ac_cv_target=aarch64-apple-darwin24.1.0}
 ac_cv_type_fd_set=${ac_cv_type_fd_set=yes}
 ac_cv_type_off_t=${ac_cv_type_off_t=yes}
 ac_cv_type_socklen_t=${ac_cv_type_socklen_t=yes}
