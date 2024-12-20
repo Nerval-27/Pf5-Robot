@@ -61,7 +61,7 @@ let target_reached_rect (prog : program) (r : rectangle) (target : rectangle) : 
   let possible_execution_list = all_choices prog in
     List.for_all (fun sub_prog ->
       let final_rectangle = List.hd (List.rev (run_rect sub_prog r)) in
-      inclusion final_rectangle target ) possible_execution_list
+    inclusion final_rectangle target ) possible_execution_list 
 
 
 
@@ -74,7 +74,7 @@ let rec run_polymorphe (transform : transformation -> 'a -> 'a) (prog : program)
                         acc @ [new_position]
                   |Either (p',p'')  -> let last_position = list_last_elem acc in
                          if Random.bool () then run_polymorphe transform p' last_position else run_polymorphe transform p'' last_position
-                  |_ ->  acc 
+                  |_ ->  acc @ []
             ) [i] program_V2
 
 
