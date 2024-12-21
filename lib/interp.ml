@@ -74,19 +74,33 @@ let target_reached_det (prog : program) (p : point) (target : rectangle) : bool 
 (* Fonction qui exécute un programme (pas nécessairement déterministe) à partir d'un point `p`.
    Elle retourne la liste des points successifs générés par l'exécution des instructions. *)
 let rec run (prog : program) (p : point) : point list =
-  let program_V3=unfold_repeat prog in  (* On déplie les répétitions du programme. *)
-   List.fold_left (fun acc inst ->  
-                  match inst with
-                  |Move t ->  let last_position = list_last_elem acc in  (* on récupère la dernière position. *)
-                        let new_position = transform t last_position in  (* on applique la transformation. *)
-                        acc @ [new_position]  (* on ajoute la nouvelle position à la liste. *)
+  (* Déplier les répétitions pour obtenir un programme sans Repeat. *)
+  let program_V3 = unfold_repeat prog in
+  (* Utiliser List.fold_left pour parcourir toutes les instructions du programme déplié. *)
+  List.fold_left (fun acc inst ->  
+    match inst with
+    (* Cas Move : appliquer une transformation à la dernière position et l'ajouter à la liste. *)
+    | Move t -> 
+        let last_position = list_last_elem acc in  (* Récupérer la dernière position dans acc. *)
+        let new_position = transform t last_position in  (* Calculer la nouvelle position. *)
+        acc @ [new_position]  (* Ajouter la nouvelle position à la liste acc. *)
 
-                  |Either (p',p'')  -> let last_position = list_last_elem acc in  (* on récupère la dernière position. *)
-                         if Random.bool () then run p' last_position else run p'' last_position  (* choix aléatoire entre les deux sous-programmes. *)
+    (* Cas Either : choisir aléatoirement un des deux sous-programmes. *)
+    | Either (p1, p2) -> 
+        let last_position = list_last_elem acc in  (* Récupérer la dernière position. *)
+        let sub_program_result = 
+          if Random.bool () then 
+            (* Choix du premier sous-programme. *)
+            run p1 last_position 
+          else 
+            (* Choix du second sous-programme. *)
+            run p2 last_position
+        in
+        acc @ sub_program_result  (* Concaténer les points générés par le sous-programme avec acc. *)
 
-                  |_ ->  failwith "Instruction Repeat non dépliée"
-            ) [p] program_V3  (* position initiale 'p' et on applique chaque instruction du programme déplié. *)
-
+    (* Cas non géré : lever une exception si un Repeat est encore présent (ne devrait pas arriver). *)
+    | _ -> failwith "Instruction Repeat non dépliée"
+  ) [p] program_V3  (* Initialiser la liste des positions avec le point de départ p. *)
 
 (* Fonction qui génère toutes les combinaisons possibles d'exécutions pour un programme
    contenant des instructions `Either`. Elle déplie toutes les alternatives possibles du programme. *)

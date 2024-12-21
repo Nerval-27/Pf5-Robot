@@ -4,7 +4,7 @@
  * working findlib toploop.
  *)
 
-#directory "/home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/lib/findlib";;
+#directory "/Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/findlib";;
   (* OCaml-4.00 requires to have #directory before we load anything *)
 
 #directory "+compiler-libs";;
@@ -29,16 +29,16 @@ let is_native =
 let suffix =
   if is_native then "cmxs" else "cma" in
 if not(exec_test "Topfind.reset;;") then (
-  Topdirs.dir_load Format.err_formatter ("/home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib." ^ suffix);
-  Topdirs.dir_load Format.err_formatter ("/home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib_top." ^ suffix);
+  Topdirs.dir_load Format.err_formatter ("/Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib." ^ suffix);
+  Topdirs.dir_load Format.err_formatter ("/Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib_top." ^ suffix);
 );
 ;;
 
 #remove_directory "+compiler-libs";;
 
 (* Old: *)
-(* #load "/home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib.cma";; *)
-(* #load "/home/adagrane/Projet_Ocaml/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib_top.cma";; *)
+(* #load "/Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib.cma";; *)
+(* #load "/Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/findlib/findlib_top.cma";; *)
 
 
 (* The following is always executed. It is harmless if findlib was already

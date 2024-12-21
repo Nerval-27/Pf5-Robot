@@ -1,4 +1,4 @@
-.TH "Hashtbl.HashedType" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Hashtbl.HashedType" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Hashtbl.HashedType \- The input signature of the functor Hashtbl.Make.
 .SH Module type

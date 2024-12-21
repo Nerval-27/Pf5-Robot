@@ -1,4 +1,4 @@
-.TH "Dynlink" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Dynlink" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Dynlink \- Dynamic loading of .cmo, .cma and .cmxs files.
 .SH Module

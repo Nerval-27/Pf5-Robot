@@ -1,4 +1,4 @@
-.TH "Identifiable" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Identifiable" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Identifiable \- Uniform interface for common data structures over various things.
 .SH Module

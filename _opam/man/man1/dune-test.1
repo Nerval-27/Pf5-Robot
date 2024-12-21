@@ -1,7 +1,7 @@
 .\" Pipe this output to groff -m man -K utf8 -T utf8 | less -R
 .\"
 .mso an.tmac
-.TH "DUNE-TEST" 1 "" "Dune 3.16.0" "Dune Manual"
+.TH "DUNE-TEST" 1 "" "Dune 3.17.0" "Dune Manual"
 .\" Disable hyphenation and ragged-right
 .nh
 .ad l
@@ -10,7 +10,7 @@
 dune\N'45'test \N'45' An alias for \fBruntest\fR\N'46'
 .SH SYNOPSIS
 .P
-\fBdune test\fR [\fIOPTION\fR]… [\fIDIR\fR]…
+\fBdune test\fR [\fIOPTION\fR]… [\fITEST\fR]…
 .SH DESCRIPTION
 .P
 \fBdune\fR\fB test\fR is an alias for \fBdune\fR\fB runtest\fR\N'46'
@@ -67,13 +67,13 @@ Automatically promote files\N'46' This is similar to running \fBdune promote\fR 
 Specified build directory\N'46' _build if unspecified
 .TP 4
 \fB\N'45'\N'45'cache\fR=\fIVAL\fR (absent \fBDUNE_CACHE\fR env)
-Enable or disable Dune cache (either \fBenabled\fR or \fBdisabled\fR)\N'46' Default is `disabled\N'39'\N'46'
+Enable or disable Dune cache (one of \fBdisabled\fR, \fBenabled\N'45'except\N'45'user\N'45'rules\fR or \fBenabled\fR)\N'46' Default is `enabled\N'45'except\N'45'user\N'45'rules\N'39'\N'46'
 .TP 4
 \fB\N'45'\N'45'cache\N'45'check\N'45'probability\fR=\fIVAL\fR (absent \fBDUNE_CACHE_CHECK_PROBABILITY\fR env)
 Check build reproducibility by re\N'45'executing randomly chosen rules and comparing their results with those stored in Dune cache\N'46' Note: by increasing the probability of such checks you slow down the build\N'46' The default probability is zero, i\N'46'e\N'46' no rules are checked\N'46'
 .TP 4
 \fB\N'45'\N'45'cache\N'45'storage\N'45'mode\fR=\fIVAL\fR (absent \fBDUNE_CACHE_STORAGE_MODE\fR env)
-Dune cache storage mode (one of \fBauto\fR, \fBhardlink\fR or \fBcopy\fR)\N'46' Default is `auto\N'39'\N'46'
+Dune cache storage mode (one of \fBauto\fR, \fBhardlink\fR or \fBcopy\fR)\N'46' Default is `hardlink\N'39'\N'46'
 .TP 4
 \fB\N'45'\N'45'config\N'45'file\fR=\fIFILE\fR
 Load this configuration file instead of the default one\N'46'
@@ -95,6 +95,9 @@ Explain why Dune decides to re\N'45'digest some files
 .TP 4
 \fB\N'45'\N'45'debug\N'45'load\N'45'dir\fR
 Print debugging info about directory loading
+.TP 4
+\fB\N'45'\N'45'debug\N'45'package\N'45'logs\fR (absent \fBDUNE_DEBUG_PACKAGE_LOGS\fR env)
+Always print the standard logs when building packages
 .TP 4
 \fB\N'45'\N'45'default\N'45'target\fR=\fITARGET\fR (absent=\fB@@default\fR)
 Set the default target that is used when none is specified to \fBdune build\fR\N'46'
@@ -217,13 +220,16 @@ These environment variables affect the execution of \fBtest\fR:
 Specified build directory\N'46' _build if unspecified
 .TP 4
 \fBDUNE_CACHE\fR
-Enable or disable Dune cache (either \fBenabled\fR or \fBdisabled\fR)\N'46' Default is `disabled\N'39'\N'46'
+Enable or disable Dune cache (one of \fBdisabled\fR, \fBenabled\N'45'except\N'45'user\N'45'rules\fR or \fBenabled\fR)\N'46' Default is `enabled\N'45'except\N'45'user\N'45'rules\N'39'\N'46'
 .TP 4
 \fBDUNE_CACHE_CHECK_PROBABILITY\fR
 Check build reproducibility by re\N'45'executing randomly chosen rules and comparing their results with those stored in Dune cache\N'46' Note: by increasing the probability of such checks you slow down the build\N'46' The default probability is zero, i\N'46'e\N'46' no rules are checked\N'46'
 .TP 4
 \fBDUNE_CACHE_STORAGE_MODE\fR
-Dune cache storage mode (one of \fBauto\fR, \fBhardlink\fR or \fBcopy\fR)\N'46' Default is `auto\N'39'\N'46'
+Dune cache storage mode (one of \fBauto\fR, \fBhardlink\fR or \fBcopy\fR)\N'46' Default is `hardlink\N'39'\N'46'
+.TP 4
+\fBDUNE_DEBUG_PACKAGE_LOGS\fR
+Always print the standard logs when building packages
 .TP 4
 \fBDUNE_DIFF_COMMAND\fR
 Shell command to use to diff files\N'46' Use \N'45' to disable printing the diff\N'46'

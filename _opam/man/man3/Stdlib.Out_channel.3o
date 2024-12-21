@@ -1,4 +1,4 @@
-.TH "Stdlib.Out_channel" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Stdlib.Out_channel" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Stdlib.Out_channel \- no description
 .SH Module

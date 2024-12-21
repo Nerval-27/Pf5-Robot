@@ -1,4 +1,4 @@
-.TH "Bytes" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Bytes" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Bytes \- Byte sequence operations.
 .SH Module

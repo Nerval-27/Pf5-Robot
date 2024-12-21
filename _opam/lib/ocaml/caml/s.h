@@ -65,11 +65,11 @@
 
 #define HAS_TIMES 1
 
-#define HAS_SECURE_GETENV 1
+/* #undef HAS_SECURE_GETENV */
 
 /* #undef HAS___SECURE_GETENV */
 
-/* #undef HAS_ISSETUGID */
+#define HAS_ISSETUGID 1
 
 /* 2. For the Unix library. */
 
@@ -222,7 +222,7 @@
 /* Define HAS_LOCALE_H if you have the include file <locale.h> and the
    uselocale() function. */
 
-/* #undef HAS_XLOCALE_H */
+#define HAS_XLOCALE_H 1
 
 /* Define HAS_XLOCALE_H if you have the include file <xlocale.h> and the
    uselocale() function. */
@@ -238,16 +238,16 @@
 
 #define HAS_PWRITE 1
 
-#define HAS_NANOSECOND_STAT 1
+/* #undef HAS_NANOSECOND_STAT */
 
-#define HAS_GETHOSTBYNAME_R 6
+/* #undef HAS_GETHOSTBYNAME_R */
 
 /* Define HAS_GETHOSTBYNAME_R if gethostbyname_r() is available.
    The value of this symbol is the number of arguments of
    gethostbyname_r(): either 5 or 6 depending on prototype.
    (5 is the Solaris version, 6 is the Linux version). */
 
-#define HAS_GETHOSTBYADDR_R 8
+/* #undef HAS_GETHOSTBYADDR_R */
 
 /* Define HAS_GETHOSTBYADDR_R if gethostbyname_r() is available.
    The value of this symbol is the number of arguments of
@@ -260,19 +260,19 @@
 
 /* Define HAS_NICE if you have nice(). */
 
-#define HAS_DUP3 1
+/* #undef HAS_DUP3 */
 
-#define HAS_PIPE2 1
+/* #undef HAS_PIPE2 */
 
-#define HAS_ACCEPT4 1
+/* #undef HAS_ACCEPT4 */
 
-#define HAS_GETAUXVAL 1
+/* #undef HAS_GETAUXVAL */
 
 #define HAS_SYS_SHM_H 1
 
 #define HAS_SHMAT 1
 
-#define HAS_EXECVPE 1
+/* #undef HAS_EXECVPE */
 
 #define HAS_POSIX_SPAWN 1
 
@@ -283,14 +283,14 @@
 
 #define HAS_SIGWAIT 1
 
-#define HAS_HUGE_PAGES 1
+/* #undef HAS_HUGE_PAGES */
 
-#define HUGE_PAGE_SIZE (4 * 1024 * 1024)
+/* #undef HUGE_PAGE_SIZE */
 
 /* #undef HAS_BROKEN_PRINTF */
 
 /* #undef HAS_STRERROR */
 
-#define HAS_POSIX_MONOTONIC_CLOCK 1
+/* #undef HAS_POSIX_MONOTONIC_CLOCK */
 
-/* #undef HAS_MACH_ABSOLUTE_TIME */
+#define HAS_MACH_ABSOLUTE_TIME 1

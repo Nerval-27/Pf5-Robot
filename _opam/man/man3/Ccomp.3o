@@ -1,4 +1,4 @@
-.TH "Ccomp" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Ccomp" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Ccomp \- Compiling C files and building C libraries
 .SH Module

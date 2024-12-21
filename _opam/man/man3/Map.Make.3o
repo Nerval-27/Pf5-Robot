@@ -1,4 +1,4 @@
-.TH "Map.Make" 3 2024-10-25 OCamldoc "OCaml library"
+.TH "Map.Make" 3 2024-12-20 OCamldoc "OCaml library"
 .SH NAME
 Map.Make \- Functor building an implementation of the map structure given a totally ordered type.
 .SH Module

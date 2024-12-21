@@ -40,23 +40,39 @@ let rec list_last_elem lst =
 
 (* Fonction qui exécute un programme sur un rectangle donné `r`. 
    Elle génère une liste des rectangles successifs générés par l'exécution des instructions. *)
-let rec run_rect (prog : program) (r : rectangle) : rectangle list =
-  let program_V2 = unfold_repeat prog in  (* On déplie les répétitions dans le programme. *)
-  List.fold_left (fun acc inst ->  (* On parcourt chaque instruction du programme. *)
-    match inst with
-    | Move t ->  (* on applique la transformation au dernier rectangle. *)
-        let last_position = list_last_elem acc in  (* on récupère la dernière position de la liste. *)
-        let new_position = transform_rect t last_position in  (* on applique la transformation sur cette position. *)
-        acc @ [new_position]  (* On ajoute le nouveau rectangle à la liste des résultats. *)
-
-    | Either (p', p'') ->  (* on choisit aléatoirement l'une des deux options. *)
-        let last_position = list_last_elem acc in
-
-        (* On applique l'une des deux branches en fonction d'un tirage aléatoire. *)
-        if Random.bool () then run_rect p' last_position else run_rect p'' last_position
-
-    | _ -> acc @ []
-  ) [r] program_V2  (* rectangle initial `r` et on applique chaque instruction du programme déplié. *)
+   let rec run_rect (prog : program) (r : rectangle) : rectangle list =
+    (* Déplier les instructions Repeat dans le programme. Cela simplifie le traitement en éliminant les boucles explicites. *)
+    let program_V2 = unfold_repeat prog in
+  
+    (* Utiliser List.fold_left pour parcourir chaque instruction du programme déplié. *)
+    List.fold_left (fun acc inst ->
+      match inst with
+  
+      (* Cas Move : appliquer une transformation au dernier rectangle de la liste *)
+      | Move t -> 
+          (* Récupérer le dernier rectangle traité (position actuelle) *)
+          let last_rectangle = list_last_elem acc in
+          (* Appliquer la transformation (translation ou rotation) au rectangle *)
+          let new_rectangle = transform_rect t last_rectangle in
+          (* Ajouter le rectangle transformé à la liste des rectangles générés *)
+          acc @ [new_rectangle]
+  
+      (* Cas Either : traiter les deux branches possibles *)
+      | Either (p1, p2) -> 
+          (* Récupérer le dernier rectangle traité (position actuelle) *)
+          let last_rectangle = list_last_elem acc in
+          (* Exécuter les deux branches pour calculer les rectangles atteints *)
+          let rect1 = run_rect p1 last_rectangle in  (* Résultat de la première branche *)
+          let rect2 = run_rect p2 last_rectangle in  (* Résultat de la seconde branche *)
+          (* Calculer le plus petit rectangle contenant les résultats des deux branches *)
+          let combined_rectangle = rectangle_of_list (corners (list_last_elem rect1) @ corners (list_last_elem rect2)) in
+          (* Ajouter ce rectangle combiné à la liste des rectangles générés *)
+          acc @ [combined_rectangle]
+  
+      (* Cas non pertinent : ignorer *)
+      | _ -> acc  (* Si une instruction incorrecte reste après unfold_repeat, on l'ignore *)
+    ) [r] program_V2  (* Initialiser avec le rectangle de départ r. *)
+  
 
 (* Fonction qui vérifie si tous les coins du rectangle `r` sont à l'intérieur du rectangle `t`. *)
 let inclusion (r : rectangle) (t : rectangle) : bool =
