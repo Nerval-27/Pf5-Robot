@@ -41,39 +41,36 @@ let rec list_last_elem lst =
 (* Fonction qui exécute un programme sur un rectangle donné `r`. 
    Elle génère une liste des rectangles successifs générés par l'exécution des instructions. *)
    let rec run_rect (prog : program) (r : rectangle) : rectangle list =
-    (* Déplier les instructions Repeat dans le programme. Cela simplifie le traitement en éliminant les boucles explicites. *)
+    Random.self_init ();
+    (* Déplier les instructions Repeat dans le programme pour simplifier le traitement *)
     let program_V2 = unfold_repeat prog in
   
-    (* Utiliser List.fold_left pour parcourir chaque instruction du programme déplié. *)
+    (* Appliquer les instructions au rectangle de départ *)
     List.fold_left (fun acc inst ->
       match inst with
   
       (* Cas Move : appliquer une transformation au dernier rectangle de la liste *)
       | Move t -> 
-          (* Récupérer le dernier rectangle traité (position actuelle) *)
           let last_rectangle = list_last_elem acc in
-          (* Appliquer la transformation (translation ou rotation) au rectangle *)
           let new_rectangle = transform_rect t last_rectangle in
-          (* Ajouter le rectangle transformé à la liste des rectangles générés *)
           acc @ [new_rectangle]
   
-      (* Cas Either : traiter les deux branches possibles *)
+      (* Cas Either : choisir aléatoirement une branche et l'exécuter *)
       | Either (p1, p2) -> 
-          (* Récupérer le dernier rectangle traité (position actuelle) *)
           let last_rectangle = list_last_elem acc in
-          (* Exécuter les deux branches pour calculer les rectangles atteints *)
-          let rect1 = run_rect p1 last_rectangle in  (* Résultat de la première branche *)
-          let rect2 = run_rect p2 last_rectangle in  (* Résultat de la seconde branche *)
-          (* Calculer le plus petit rectangle contenant les résultats des deux branches *)
-          let combined_rectangle = rectangle_of_list (corners (list_last_elem rect1) @ corners (list_last_elem rect2)) in
-          (* Ajouter ce rectangle combiné à la liste des rectangles générés *)
-          acc @ [combined_rectangle]
+          
+          (* Faire un choix aléatoire entre les deux branches *)
+          let chosen_prog = if Random.bool () then p1 else p2 in
+          let branch_result = run_rect chosen_prog last_rectangle in
+          
+          (* Ajouter les rectangles générés par la branche choisie *)
+          acc @ branch_result
   
-      (* Cas non pertinent : ignorer *)
-      | _ -> acc  (* Si une instruction incorrecte reste après unfold_repeat, on l'ignore *)
-    ) [r] program_V2  (* Initialiser avec le rectangle de départ r. *)
+      (* Cas Repeat ne devrait pas exister après unfold_repeat *)
+      | Repeat _ -> failwith "Les instructions Repeat doivent être supprimées par unfold_repeat"
   
-
+    ) [r] program_V2  (* Initialiser avec le rectangle de départ `r`. *)
+  
 (* Fonction qui vérifie si tous les coins du rectangle `r` sont à l'intérieur du rectangle `t`. *)
 let inclusion (r : rectangle) (t : rectangle) : bool =
   let corners_list = corners r in

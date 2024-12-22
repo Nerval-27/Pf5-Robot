@@ -31,6 +31,7 @@ let convert_to_int x =
   try Some (int_of_string x) with
   | Failure _ -> None
 
+
 let rec parse argv index options_update =
   if index >= Array.length argv then
     options_update

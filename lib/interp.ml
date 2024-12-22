@@ -74,6 +74,7 @@ let target_reached_det (prog : program) (p : point) (target : rectangle) : bool 
 (* Fonction qui exécute un programme (pas nécessairement déterministe) à partir d'un point `p`.
    Elle retourne la liste des points successifs générés par l'exécution des instructions. *)
 let rec run (prog : program) (p : point) : point list =
+  Random.self_init ();
   (* Déplier les répétitions pour obtenir un programme sans Repeat. *)
   let program_V3 = unfold_repeat prog in
   (* Utiliser List.fold_left pour parcourir toutes les instructions du programme déplié. *)
