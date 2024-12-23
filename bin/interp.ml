@@ -84,32 +84,39 @@ set_color (rgb r g b);
 let string_of_rectangle_position rect width_size height_size opt_uses =
   let (r, g, b) = opt_uses.rc in
   set_color (rgb r g b);
+  
   let spacing_x = width_size / 25 in (* Espacement des graduations sur l'axe X *)
   let spacing_y = height_size / 25 in (* Espacement des graduations sur l'axe Y *)
-  let origin_x = width_size / 2 in (* Centre de l'axe X *)
-  let origin_y = height_size / 2 in (* Centre de l'axe Y *)
+  
+  let origin_x = float_of_int (width_size / 2) in (* Centre de l'axe X, converti en float *)
+  let origin_y = float_of_int (height_size / 2) in (* Centre de l'axe Y, converti en float *)
 
-  let grad_x_min = (int_of_float rect.x_min - origin_x) / spacing_x in
-  let grad_y_min = (int_of_float rect.y_min - origin_y) / spacing_y in
-  let grad_x_max = (int_of_float rect.x_max - origin_x) / spacing_x in
-  let grad_y_max = (int_of_float rect.y_max - origin_y) / spacing_y in
+  (* Calcul des coordonnées du rectangle par rapport à l'origine de la fenêtre *)
+  let grad_x_min = (rect.x_min -. origin_x) /. float_of_int spacing_x in
+  let grad_y_min = (rect.y_min -. origin_y) /. float_of_int spacing_y in
+  let grad_x_max = (rect.x_max -. origin_x) /. float_of_int spacing_x in
+  let grad_y_max = (rect.y_max -. origin_y) /. float_of_int spacing_y in
 
-  moveto 10 ((snd opt_uses.size) - 40);
-  draw_string ("Pos of rect [x_min: " ^ string_of_int grad_x_min ^ ", y_min: ");
+  (* Affichage des positions du rectangle *)
+  moveto 10 (height_size - 40);
+  draw_string ("Pos of rect [x_min: " ^ string_of_int (int_of_float grad_x_min) ^ ", y_min: ");
+  
   moveto 10 (height_size - 60);  (* Ligne 2 *)
-  draw_string (" " ^ string_of_int grad_y_min ^ ", x_max: " ^ string_of_int grad_x_max ^ ", y_max: " ^ string_of_int grad_y_max ^ "]")
+  draw_string (" " ^ string_of_int (int_of_float grad_y_min) ^ ", x_max: " ^ string_of_int (int_of_float grad_x_max) ^ ", y_max: " ^ string_of_int (int_of_float grad_y_max) ^ "]")
 
 
 (* Dessiner un rectangle *)
+(* Dessiner un rectangle en tenant compte de l'origine *)
 let draw_rectangle r opt_uses =
-  let x = int_of_float r.x_min in
-  let y = int_of_float r.y_min in
+  let origin_x = (fst opt_uses.size) / 2 in
+  let origin_y = (snd opt_uses.size) / 2 in
+  let x = int_of_float r.x_min + origin_x in
+  let y = int_of_float r.y_min + origin_y in
   let width = int_of_float (r.x_max -. r.x_min) in
   let height = int_of_float (r.y_max -. r.y_min) in
   let (r_c, g_c, b_c) = opt_uses.rc in
   set_color (rgb r_c g_c b_c);
-  fill_rect x y (width*((fst opt_uses.size)/25)) (height*((snd opt_uses.size)/25))
-  
+  fill_rect x y (width * ((fst opt_uses.size) / 25)) (height * ((snd opt_uses.size) / 25))
 
 (* Dessiner l'état courant du robot *)
 let draw_state rect_opt point_opt opt_uses =
@@ -180,7 +187,7 @@ let execute opt_uses =
 
   let prog_list = [prog_1 ;  prog_2 ;  prog_3] in
   let unfolded_prog = unfold_repeat (List.nth prog_list (opt_uses.prog - 1)) in
-  let dot_list = run (List.nth prog_list (opt_uses.prog - 1)) {x = 0.; y = 0.} in
+  let dot_list = run (List.nth prog_list (opt_uses.prog - 1)) {x = float_of_int ((fst opt_uses.size)/2); y=float_of_int ((snd opt_uses.size)/2)} in
   let rect_list = match opt_uses.abs with
     | None, _ -> []
     | Some rect, _ -> if not (in_rectangle rect {x = 0.; y = 0.}) then raise Quit
