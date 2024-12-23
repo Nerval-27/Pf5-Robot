@@ -108,7 +108,7 @@ let draw_rectangle r opt_uses =
   let height = int_of_float (r.y_max -. r.y_min) in
   let (r_c, g_c, b_c) = opt_uses.rc in
   set_color (rgb r_c g_c b_c);
-  fill_rect x y width height
+  fill_rect x y (width*((fst opt_uses.size)/25)) (height*((snd opt_uses.size)/25))
 
   let prog_1 : program = [
     Repeat (35, [
