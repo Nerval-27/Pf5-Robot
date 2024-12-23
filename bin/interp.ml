@@ -28,13 +28,15 @@ let apply_colors opt_uses =
 
   (* Affiche les commandes utilisateur à l'écran *)
 let show_user_order opt_uses=
-    moveto ((fst opt_uses.size)-200) ((snd opt_uses.size)-((snd opt_uses.size)/3));
+    moveto ((fst opt_uses.size)-(fst opt_uses.size)/3) ((snd opt_uses.size)-35);
     let (r_f, g_f, b_f) = opt_uses.fc in
       set_color (rgb r_f g_f b_f); 
     draw_string "-PRESS S TO GO TO THE NEXT STEP";
-    moveto ((fst opt_uses.size)-220) ((snd opt_uses.size)-((snd opt_uses.size)/4));
+    moveto ((fst opt_uses.size)-(fst opt_uses.size)/3) ((snd opt_uses.size)-55);
     draw_string "-PRESS P TO GO TO THE PREVIOUS STEP";
-    moveto ((fst opt_uses.size)-250) ((snd opt_uses.size)-200)
+    moveto ((fst opt_uses.size)-(fst opt_uses.size)/3) ((snd opt_uses.size)-75);
+    draw_string "-PRESS Q TO QUIT";
+    moveto ((fst opt_uses.size)-(fst opt_uses.size)/3) ((snd opt_uses.size)-95)
 
 
     let truncate_string (s : string) (max_length : int) : string =
