@@ -3,9 +3,9 @@
  *
  *)
 
-let config_file = "/Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/findlib.conf";;
+let config_file = "/home/adagrane/PROJET_PF5/projet-pf-5-nerval-adam/_opam/lib/findlib.conf";;
 
-let ocaml_stdlib = "/Users/nervalgbaguidi/Documents/PF5-Project/projet-pf-5-nerval-adam/_opam/lib/ocaml";;
+let ocaml_stdlib = "/home/adagrane/PROJET_PF5/projet-pf-5-nerval-adam/_opam/lib/ocaml";;
 
 let ocaml_ldconf = Filename.concat ocaml_stdlib "ld.conf";;
 
@@ -13,7 +13,7 @@ let ocaml_has_autolinking = true;;
 
 let libexec_name = "stublibs";;
 
-let system = "macosx";;
+let system = "linux";;
 (* - "mingw", "mingw64", "win32", "cygwin", "linux_elf", ... *)
 
 let dll_suffix =

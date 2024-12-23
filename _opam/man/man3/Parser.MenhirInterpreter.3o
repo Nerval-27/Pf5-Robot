@@ -1,4 +1,4 @@
-.TH "Parser.MenhirInterpreter" 3 2024-12-20 OCamldoc "OCaml library"
+.TH "Parser.MenhirInterpreter" 3 2024-12-21 OCamldoc "OCaml library"
 .SH NAME
 Parser.MenhirInterpreter \- no description
 .SH Module

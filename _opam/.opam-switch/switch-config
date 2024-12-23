@@ -1,11 +1,11 @@
 opam-version: "2.0"
-synopsis: "ocaml-base-compiler = 4.14.1 | ocaml-system = 4.14.1"
-opam-root: "/Users/nervalgbaguidi/.opam"
+synopsis: "/home/adagrane/PROJET_PF5/projet-pf-5-nerval-adam"
+opam-root: "/home/adagrane/.opam"
 invariant: ["ocaml-base-compiler" {= "4.14.1"} | "ocaml-system" {= "4.14.1"}]
 paths {
   
 }
 variables {
-  user: "nervalgbaguidi"
-  group: "staff"
+  user: "adagrane"
+  group: "adagrane"
 }

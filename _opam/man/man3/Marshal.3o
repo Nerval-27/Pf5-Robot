@@ -1,4 +1,4 @@
-.TH "Marshal" 3 2024-12-20 OCamldoc "OCaml library"
+.TH "Marshal" 3 2024-12-21 OCamldoc "OCaml library"
 .SH NAME
 Marshal \- Marshaling of data structures.
 .SH Module

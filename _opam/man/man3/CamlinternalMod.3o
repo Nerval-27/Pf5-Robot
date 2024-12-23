@@ -1,4 +1,4 @@
-.TH "CamlinternalMod" 3 2024-12-20 OCamldoc "OCaml library"
+.TH "CamlinternalMod" 3 2024-12-21 OCamldoc "OCaml library"
 .SH NAME
 CamlinternalMod \- Run-time support for recursive modules.
 .SH Module

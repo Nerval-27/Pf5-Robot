@@ -1,4 +1,4 @@
-.TH "Stack" 3 2024-12-20 OCamldoc "OCaml library"
+.TH "Stack" 3 2024-12-21 OCamldoc "OCaml library"
 .SH NAME
 Stack \- Last-in first-out stacks.
 .SH Module

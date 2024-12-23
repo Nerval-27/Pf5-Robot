@@ -1,4 +1,4 @@
-.TH "Lexer" 3 2024-12-20 OCamldoc "OCaml library"
+.TH "Lexer" 3 2024-12-21 OCamldoc "OCaml library"
 .SH NAME
 Lexer \- The lexical analyzer
 .SH Module

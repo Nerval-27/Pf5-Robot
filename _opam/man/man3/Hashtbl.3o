@@ -1,4 +1,4 @@
-.TH "Hashtbl" 3 2024-12-20 OCamldoc "OCaml library"
+.TH "Hashtbl" 3 2024-12-21 OCamldoc "OCaml library"
 .SH NAME
 Hashtbl \- Hash tables and hash functions.
 .SH Module
