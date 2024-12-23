@@ -110,9 +110,9 @@ let draw_rectangle r opt_uses =
   set_color (rgb r_c g_c b_c);
   fill_rect x y (width*((fst opt_uses.size)/25)) (height*((snd opt_uses.size)/25))
 
-  let prog_1 : program = [
-    Repeat (35, [
-      Move (Translate {x = 10.; y = 10.});
+  (*let prog_1 : program = [
+    Repeat (5, [
+      Move (Translate {x = (float_of_int ((fst opt_uses.size)/25)) ; y = float_of_int ((snd opt_uses.size)/25)});
   ])
   ]
 
@@ -141,26 +141,22 @@ let draw_rectangle r opt_uses =
     )
   ]
   
-    
-    
   let prog_3 : program = [
 
-  Repeat (8, [
-    Move (Translate {x = 25.; y = 25.})
-  ]);
+    Repeat (8, [
+      Move (Translate {x = 25.; y = 25.})
+    ]);
 
-  Repeat (5, [
-    Move (Translate {x = 25.; y = -25.})
-  ]);
-     Repeat (5, [
-    Move (Translate {x = -25.; y = 0.})
-  ])
-]
+    Repeat (5, [
+      Move (Translate {x = 25.; y = -25.})
+    ]);
 
-  
+    Repeat (5, [
+      Move (Translate {x = -25.; y = 0.})
+    ])
+  ]
 
-  
-let prog_list = [prog_1 ;  prog_2 ;  prog_3]
+let prog_list = [prog_1 ;  prog_2 ;  prog_3]*)
 
 (* Dessiner l'état courant du robot *)
 let draw_state rect_opt point_opt opt_uses =
@@ -182,6 +178,54 @@ let draw_state rect_opt point_opt opt_uses =
 
 (* Exécute le programme *)
 let execute opt_uses =
+  let taille_graduationX = (float_of_int ((fst opt_uses.size)/25)) in
+  let taille_graduationY = float_of_int ((snd opt_uses.size)/25) in
+  let prog_1 : program = [
+    Repeat (9, [
+      Move (Translate {x = taille_graduationX ; y = taille_graduationY});
+  ])
+  ] in
+  
+  let prog_2: program = [
+    Either (
+      [
+        Move (Translate {x = taille_graduationX; y = taille_graduationY});
+        Repeat (3, [
+          Move (Translate {x = 0.; y = taille_graduationY})
+        ]);
+
+        Repeat (8, [
+          Move (Translate {x = taille_graduationX; y = 0.})
+        ])
+
+      ],
+      [
+        Move (Translate {x = taille_graduationX; y = taille_graduationY});
+        Repeat (4, [
+          Move (Translate {x = taille_graduationX; y = 0.})
+        ]);
+        Repeat (6, [
+          Move (Translate {x = 0.; y = taille_graduationY})
+        ])
+      ]
+    )
+  ] in 
+  
+  let prog_3 : program = [
+    Repeat (8, [
+      Move (Translate {x = taille_graduationX; y = taille_graduationY})
+    ]);
+
+    Repeat (5, [
+      Move (Translate {x = taille_graduationX; y = -. taille_graduationY})
+    ]);
+
+    Repeat (5, [
+      Move (Translate {x = -. taille_graduationX; y = 0.})
+    ])
+  ] in 
+
+  let prog_list = [prog_1 ;  prog_2 ;  prog_3] in
   let unfolded_prog = unfold_repeat (List.nth prog_list (opt_uses.prog - 1)) in
   let dot_list = run (List.nth prog_list (opt_uses.prog - 1)) {x = 0.; y = 0.} in
   let rect_list = match opt_uses.abs with
