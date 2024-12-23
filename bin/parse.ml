@@ -39,12 +39,12 @@ let rec parse argv index options_update =
     match argv.(index) with
     | "-abs" ->
       let x_min = convert_to_float argv.(index + 1) in
-      let x_max= convert_to_float argv.(index + 2) in
-      let y_min = convert_to_float argv.(index + 3) in
+      let y_min= convert_to_float argv.(index + 2) in
+      let x_max = convert_to_float argv.(index + 3) in
       let y_max = convert_to_float argv.(index + 4) in
-      (match x_min, x_max, y_min, y_max with
+      (match x_min, y_min, x_max, y_max with
       | Some a, Some b, Some c, Some d ->
-        let rectangle = { x_min=a; x_max=b ;y_min=c ;y_max=d } in
+        let rectangle = { x_min=a; y_min=b ;x_max=c ;y_max=d } in
         parse argv (index + 5) { options_update with abs = (Some rectangle, true) }
       | _ -> failwith "Invalid parameters for -abs")
 
