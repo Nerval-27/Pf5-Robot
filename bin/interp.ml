@@ -109,54 +109,7 @@ let draw_rectangle r opt_uses =
   let (r_c, g_c, b_c) = opt_uses.rc in
   set_color (rgb r_c g_c b_c);
   fill_rect x y (width*((fst opt_uses.size)/25)) (height*((snd opt_uses.size)/25))
-
-  (*let prog_1 : program = [
-    Repeat (5, [
-      Move (Translate {x = (float_of_int ((fst opt_uses.size)/25)) ; y = float_of_int ((snd opt_uses.size)/25)});
-  ])
-  ]
-
-  let prog_2: program = [
-    Either (
-      [
-        Move (Translate {x = 20.; y = 20.});
-        Repeat (15, [
-          Move (Translate {x = 0.; y = 20.})
-        ]);
-
-        Repeat (25, [
-          Move (Translate {x = 20.; y = 0.})
-        ])
-
-      ],
-      [
-        Move (Translate {x = 20.; y = 20.});
-        Repeat (25, [
-          Move (Translate {x = 20.; y = 0.})
-        ]);
-        Repeat (15, [
-          Move (Translate {x = 0.; y = 20.})
-        ])
-      ]
-    )
-  ]
   
-  let prog_3 : program = [
-
-    Repeat (8, [
-      Move (Translate {x = 25.; y = 25.})
-    ]);
-
-    Repeat (5, [
-      Move (Translate {x = 25.; y = -25.})
-    ]);
-
-    Repeat (5, [
-      Move (Translate {x = -25.; y = 0.})
-    ])
-  ]
-
-let prog_list = [prog_1 ;  prog_2 ;  prog_3]*)
 
 (* Dessiner l'état courant du robot *)
 let draw_state rect_opt point_opt opt_uses =
